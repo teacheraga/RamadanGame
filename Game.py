@@ -27,8 +27,6 @@ game = True
 clock = time.Clock()
 clock.tick(60)
 window.blit(background, (0, 0))
-window.blit(Guy, (GuyPosx, GuyPosy))
-window.blit(Food, (FoodPosx, FoodPosy))
  
 while game:
     #detect if game ended
@@ -53,5 +51,6 @@ while game:
         Food_speed = -Food_speed
  
  
-
+    window.blit(Guy, (GuyPosx, GuyPosy))
+    window.blit(Food, (FoodPosx, FoodPosy))
     display.update()
