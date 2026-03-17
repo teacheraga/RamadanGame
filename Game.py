@@ -2,10 +2,11 @@ from pygame import *
  
 SCREEN_WIDTH = 1920
 SCREEN_HEIGHT = 1080
+
  
 window = display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 display.set_caption('Catch Me If You Can')
-background = image.load('Background.png')
+background = transform.scale(image.load('Background.png'),(SCREEN_WIDTH,SCREEN_HEIGHT)) 
  
 GuySize  = (150, 200 )
 FoodSize = (100, 100)
@@ -21,12 +22,8 @@ GuySpeed = 5
  
 FoodPosx = 100
 FoodPosy = 100
-Food_speed = 10
  
 game = True
-clock = time.Clock()
-clock.tick(60)
-window.blit(background, (0, 0))
  
 while game:
     #detect if game ended
@@ -45,12 +42,9 @@ while game:
     if keys[K_DOWN] and GuyPosy < SCREEN_HEIGHT - GuySize[1]:
         GuyPosy += GuySpeed
  
-    #move food
-    FoodPosx += Food_speed
-    if FoodPosx > SCREEN_WIDTH or FoodPosx < 0:
-        Food_speed = -Food_speed
  
- 
+    window.blit(background, (0, 0))
     window.blit(Guy, (GuyPosx, GuyPosy))
     window.blit(Food, (FoodPosx, FoodPosy))
+    
     display.update()
